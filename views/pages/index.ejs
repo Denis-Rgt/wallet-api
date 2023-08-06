@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="/stylesheet/index.css">
+</head>
+<body class="container">
+    <header>
+    </header>
+    <main>
+        <h1>Bienvenue</h1>
+        <p>Vous êtes sur la page d'accueil</p>
+        <H2>Nouvelle catégorie</H2>
+        <form action="/addCategory" method="post" >
+            <label for="name">Nom de la catégorie</label>
+            <input type="text" name="name" id="name" placeholder="Nom de la catégorie" required>
+            <input type="submit" value="Ajouter">
+        </form>
+
+        <H2>Get categories</H2>
+        <form action="/getCategories" method="get" >
+            <input type="submit" value="Get categories">
+        </form>
+
+        <H2>Get One Category</H2>
+            <span>Number:</span>
+            <input type="text" id="OneCategory"></input>
+            <br>
+            <input type="button" onclick="OneCategory()" value="Submit"></input>
+        
+        <H2>Nouvelle dépense</H2>
+        <form action="/addDepense" method="post" >
+            <label for="name">Nom de la dépense</label>
+            <input type="text" name="name" id="name" placeholder="Nom de la dépense" required>
+            <label for="number">Montant</label>
+            <input type="number" step="any" name="amount" id="amount" placeholder="Montant de la dépense" required>
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date" placeholder="Date de la dépense" required>
+            <label for="name">Catégorie</label>
+            <input type="number" name="category_id" id="category_id" placeholder="Catégorie de la dépense" required>
+            <label for="number">Utilisateur</label>
+            <input type="number" name="user_id" id="user_id" placeholder="Utilisateur de la dépense" required>
+            <label for="text">Description</label>
+            <input type="text" name="description" id="description" placeholder="Description" required>
+
+
+            <input type="submit" value="Ajouter">
+        </form>
+
+        <H2>Get expenses</H2>
+        <form action="/getDepenses" method="get" >
+            <input type="submit" value="Get expenses">
+        </form>
+
+        <H2>Get One Expense</H2>
+            <span>Number:</span>
+            <input type="text" id="OneExpense"></input>
+            <br>
+            <input type="button" onclick="getOneExpense()" value="Submit"></input>
+
+        <H2>Update Expense</H2>
+        <form  method="post" onsubmit="return onsubmitform();">
+            <label for="name">Nom de la dépense</label>
+            <input type="text" name="name" id="name" placeholder="Nom de la dépense" required>
+            <label for="number">Montant</label>
+            <input type="number" step="any" name="amount" id="amount" placeholder="Montant de la dépense" required>
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date" placeholder="Date de la dépense" required>
+            <label for="name">Catégorie</label>
+            <input type="number" name="category_id" id="category_id" placeholder="Catégorie de la dépense" required>
+            <label for="number">Utilisateur</label>
+            <input type="number" name="user_id" id="user_id" placeholder="Utilisateur de la dépense" required>
+            <label for="text">Description</label>
+            <input type="text" name="description" id="description" placeholder="Description" required>
+            <label for="number">ID</label>
+            <input type="number" name="updated_id" id="updated_id" placeholder="ID de la dépense" required>
+
+            <input type="submit" value="Modifier">
+        </form>
+
+        <H2>Delete Expense</H2>
+        <form action="/deleteDepense" method="delete" >
+            <label for="number">ID</label>
+            <input type="number" name="id" id="id" placeholder="ID de la dépense" required>
+            <input type="submit" value="Supprimer">
+        </form>
+
+        
+        <H2>Nouveau User</H2>
+        <form action="/addUser" method="post" >
+            <label for="name">Nom de l'utilisateur</label>
+            <input type="text" name="name" id="name" placeholder="Nom de l'utilisateur" required>
+            <label for="name">Email</label>
+            <input type="text" name="email" id="email" placeholder="Email de l'utilisateur" required>
+            <label for="password">Mot de passe</label>
+            <input type="text" name="password" id="password" placeholder="Mot de passe de l'utilisateur" required>
+            <input type="submit" value="Ajouter">
+        </form>
+
+        <H2>Get Users</H2>
+        <form action="/getUsers" method="get" >
+            <input type="submit" value="Get Users">
+        </form>
+
+        <H2>Get One User</H2>
+            <span>Number:</span>
+            <input type="text" id="OneUser"></input>
+            <br>
+            <input type="button" onclick="OneUser()" value="Submit"></input>
+    </main>
+
+<footer>
+    <p>© 2020 - Tous droits réservés</p>
+    <script>
+        function OneUser() {
+        var input = document.getElementById("OneUser");
+        window.location = "getOneUser/" + input.value;
+        }
+        function OneCategory() {
+        var input = document.getElementById("OneCategory");
+        window.location = "getOneCategory/" + input.value;
+        }
+        function getOneExpense() {
+        var input = document.getElementById("OneExpense");
+        window.location = "getOneDepense/" + input.value;
+        }
+        function onsubmitform() {
+            var input = document.getElementById("updated_id");
+            document.myform.action ="updateDepense/" + input.value;
+            window.location = "updateDepense/" + input.value;
+        }
+
+    </script>
+</footer>
+
+</body>
+</html>
