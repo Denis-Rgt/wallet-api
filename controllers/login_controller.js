@@ -11,7 +11,7 @@ const jwtExpirySeconds = 172800 // 2 days
 // });
 
 exports.login = async function (req, res) {
-    console.log('verification login');
+    //console.log('verification login');
     await User.findOne({ where: { email: req.body.email } })
     .then(function (user) {
     if (!user) {
@@ -51,9 +51,9 @@ exports.isAuth = async function (req, res, next) {
             jwt.verify(token, jwtKey, (err, payload) => {
                 if (err) {
                     res.status(401).json({ error: "Not Authorized" });
-                    console.log("Not Authorized");
+                    //console.log("Not Authorized");
                 } else {
-                    console.log(payload);
+                    //console.log(payload);
                     req.user = payload; // allow to use the user id in the controller
                     return next(); 
                 }

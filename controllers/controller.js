@@ -13,13 +13,12 @@ exports.index = function (req, res) {
     res.render('pages/index');
 }
 
-
 exports.addCategory = async function (req, res) {
-    console.log(req.body);
+    ////console.log(req.body);
     let category = Category.build({ nom: req.body.nom })
     await category.save()
     .then(data => {
-      console.log(data);
+      // //console.log(data);
       res.json(data);
     })
     .catch(err => {
@@ -28,11 +27,11 @@ exports.addCategory = async function (req, res) {
 }
 
 exports.addDepense = async function (req, res) {
-  console.log(req.body);
+  // //console.log(req.body);
     let depense = Depense.build({ nom: req.body.nom, montant: req.body.montant, category_id: req.body.category_id, date : req.body.date, description: req.body.description, user_id: req.body.user_id })
     await depense.save()
     .then(data => {
-      console.log(data);
+      // //console.log(data);
       res.json(data);
     })
     .catch(err => {
@@ -48,7 +47,7 @@ exports.getDepenses = async function (req, res) {
       }
     })
     .then(data => {
-      console.log("Depenses récupérées !");
+      // //console.log("Depenses récupérées !");
       res.json(data);
     })
     .catch(err => {
@@ -64,7 +63,7 @@ exports.getDepenses = async function (req, res) {
     }
   })
   .then(data => {
-    console.log(data);
+    // //console.log(data);
     res.json(data);
   })
   .catch(err => {
@@ -88,7 +87,7 @@ exports.addUser = async function (req, res) {
   
     await user.save()
     .then(data => {
-      console.log(data);
+      // //console.log(data);
       res.json(data);
     })
     .catch(err => {
@@ -114,7 +113,7 @@ exports.getCategories = async function (req, res) {
     }
   })
   .then(data => {
-    console.log(data);
+    //console.log(data);
     res.json(data);
   })
   .catch(err => {
@@ -171,7 +170,7 @@ exports.getOneUser = async function (req, res) {
 }
 
 exports.updateDepense = async function (req, res) {
-  console.log(req.body, req.params.depense_id);
+  //console.log(req.body, req.params.depense_id);
   Depense.update({ nom: req.body.nom, 
                   montant: req.body.montant, 
                   category_id: req.body.category_id, 
